@@ -1,0 +1,105 @@
+data:
+  tickets:
+    count_min: 800
+    count_max: 1200
+    days: 90
+    categories:
+      - bug
+      - feature
+      - account
+      - billing
+      - security
+      - performance
+    dirty_categories:
+      - "Bug"
+      - " billing"
+      - "secuirty"
+    priority_weights:
+      low: 0.30
+      medium: 0.40
+      high: 0.20
+      critical: 0.10
+    resolution_hours_mean: 24
+    resolution_hours_std: 12
+    csat_mean: 4.0
+    csat_std: 0.8
+    data_quality:
+      missing_csat_rate: 0.03
+      negative_resolution_rate: 0.02
+      duplicate_rate: 0.01
+      typo_rate: 0.02
+      future_timestamp_rate: 0.01
+
+  services:
+    names:
+      - web-server
+      - api-gateway
+      - database
+      - cache
+      - auth-service
+      - dns
+      - file-storage
+      - monitoring
+    check_interval_minutes: 15
+    days: 30
+    incidents_per_service_min: 2
+    incidents_per_service_max: 6
+    response_time_ms_mean: 50
+    response_time_ms_std: 20
+    data_quality:
+      out_of_order_rate: 0.02
+      missing_rate: 0.01
+      duplicate_rate: 0.01
+      negative_response_rate: 0.01
+
+  applications:
+    count_min: 150
+    count_max: 250
+    days: 60
+    roles:
+      - software-engineer
+      - devops-engineer
+      - data-scientist
+      - product-manager
+      - designer
+    role_weights:
+      software-engineer: 0.35
+      devops-engineer: 0.20
+      data-scientist: 0.15
+      product-manager: 0.15
+      designer: 0.15
+    source_weights:
+      linkedin: 0.30
+      seek: 0.20
+      indeed: 0.20
+      company-website: 0.20
+      referral: 0.10
+    stages:
+      - applied
+      - screened
+      - interviewed
+      - offered
+      - accepted
+      - rejected
+    data_quality:
+      impossible_transition_rate: 0.02
+      missing_id_rate: 0.01
+      future_timestamp_rate: 0.01
+      unknown_source_rate: 0.02
+
+analytics:
+  anomaly_z_threshold: 2.0
+  sla_hours: 48
+  uptime_warning: 99.5
+  uptime_critical: 99.0
+
+  thresholds:
+    sla_compliance: { warning: 95.0, critical: 90.0 }
+    conversion: { warning: 15.0, critical: 10.0 }
+    data_quality: { warning: 0.02, critical: 0.05 }
+
+  alerts:
+    sla_breach_percent: { high: 10.0, warning: 5.0 }
+    incidents: 20
+    conversion_critical: 5.0
+    dq_issues: 50
