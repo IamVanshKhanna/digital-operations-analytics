@@ -71,7 +71,10 @@ digital-operations-analytics/
 │   └── app.py                         # Streamlit dashboard (5 tabs)
 ├── tests/
 │   ├── test_data_quality.py          # Generator + cleaning tests
-│   └── test_metrics.py               # KPI + analytics tests
+│   ├── test_metrics.py               # KPI + analytics tests
+│   ├── test_dashboard_rendering.py   # Dashboard render-cycle tests
+│   ├── test_dashboard_export.py      # Export tests
+│   └── test_dashboard_export_simple.py
 ├── requirements.txt
 └── Makefile
 ```
@@ -109,7 +112,7 @@ Sidebar controls: date range, ticket category multi-select, service multi-select
 | **Statistical analysis** | Z-score anomaly detection, Pearson correlation, moving averages |
 | **Dashboard design** | Streamlit with Plotly, responsive layout, RAG status, executive summary |
 | **Stakeholder communication** | Executive summary tab, auto-generated insight text, data quality reporting |
-| **Software engineering** | Config-driven design, separation of concerns, 48 passing tests |
+| **Software engineering** | Config-driven design, separation of concerns, 48 passing tests, GitHub Actions CI |
 | **Systems thinking** | Understanding how infrastructure failures propagate to customer-facing support channels |
 
 ## Quick Start

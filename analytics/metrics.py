@@ -4,11 +4,12 @@ from scipy import stats
 from typing import Dict, List, Any, Union, Optional, Tuple
 
 
-def detect_anomalies(series: pd.Series, z_threshold: float = 2.0) -> np.ndarray:
+def detect_anomalies(series: pd.Series, z_threshold: float = 2.0) -> pd.Series:
+    """Return a boolean mask aligned to the input series index."""
     if len(series) < 4:
-        return np.zeros(len(series), dtype=bool)
+        return pd.Series(False, index=series.index)
     z = np.abs(stats.zscore(series.fillna(series.mean())))
-    return z > z_threshold
+    return pd.Series(z > z_threshold, index=series.index)
 
 
 def week_over_week_change(series: pd.Series) -> float:
